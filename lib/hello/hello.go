@@ -2,10 +2,10 @@ package hello
 
 import "fmt"
 
-func Println(i int) {
-	fmt.Printf("Hello %d\n", i)
+func Println(i, j int) {
+	fmt.Printf("Hello %d\n", i+j)
 }
 
-func DebugPrint(i int) {
-	Println(i)
+func DebugPrint(i, j int) {
+	Println(i, j)
 }
