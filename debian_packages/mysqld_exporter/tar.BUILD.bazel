@@ -1,0 +1,5 @@
+filegroup(
+    name = "bin",
+    srcs = glob(["*/mysqld_exporter"]),
+    visibility = ["//visibility:public"],
+)

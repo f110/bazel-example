@@ -1,0 +1,20 @@
+load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_deb", "pkg_tar")
+
+pkg_tar(
+    name = "package-tar",
+    srcs = [
+        "@com_github_prometheus_mysqld_exporter//:bin",
+    ],
+    mode = "0755",
+    package_dir = "/usr/local/bin",
+)
+
+pkg_deb(
+    name = "package",
+    architecture = "amd64",
+    data = ":package-tar",
+    description = "Exporter for MySQL server metrics",
+    maintainer = "Fumihiro Ito <fmhrit@gmail.com>",
+    package = "mysqld-exporter",
+    version = "0.11.0-1",
+)
