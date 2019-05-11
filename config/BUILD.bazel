@@ -1,0 +1,6 @@
+load("//test-suite/example-suite/rules:def.bzl", "example_config_test")
+
+example_config_test(
+    name = "test",
+    src = "success.conf",
+)
