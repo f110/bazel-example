@@ -1,0 +1,20 @@
+# permissions to do viewer streams.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: stream-viewer-role
+rules:
+- apiGroups:
+  - example.f110.dev
+  resources:
+  - streams
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - example.f110.dev
+  resources:
+  - streams/status
+  verbs:
+  - get

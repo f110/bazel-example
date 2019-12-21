@@ -1,0 +1,7 @@
+domain: f110.dev
+repo: github.com/f110/bazel-example/operator
+resources:
+- group: example
+  kind: Stream
+  version: v1
+version: "2"

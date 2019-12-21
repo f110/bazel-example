@@ -1,0 +1,39 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["stream_controller.go"],
+    importpath = "github.com/f110/bazel-example/operator/controllers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//operator/api/v1:go_default_library",
+        "//operator/vendor/github.com/go-logr/logr:go_default_library",
+        "//operator/vendor/k8s.io/apimachinery/pkg/runtime:go_default_library",
+        "//operator/vendor/sigs.k8s.io/controller-runtime:go_default_library",
+        "//operator/vendor/sigs.k8s.io/controller-runtime/pkg/client:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "suite_test.go",
+        "utils_test.go",
+    ],
+    data = [
+        "@io_etcd//:bin",
+        "@io_k8s_kube_apiserver//:bin",
+    ],  # keep
+    embed = [":go_default_library"],
+    deps = [
+        "//operator/api/v1:go_default_library",
+        "//operator/vendor/github.com/onsi/ginkgo:go_default_library",
+        "//operator/vendor/github.com/onsi/gomega:go_default_library",
+        "//operator/vendor/k8s.io/client-go/kubernetes/scheme:go_default_library",
+        "//operator/vendor/k8s.io/client-go/rest:go_default_library",
+        "//operator/vendor/sigs.k8s.io/controller-runtime/pkg/client:go_default_library",
+        "//operator/vendor/sigs.k8s.io/controller-runtime/pkg/envtest:go_default_library",
+        "//operator/vendor/sigs.k8s.io/controller-runtime/pkg/log:go_default_library",
+        "//operator/vendor/sigs.k8s.io/controller-runtime/pkg/log/zap:go_default_library",
+    ],
+)

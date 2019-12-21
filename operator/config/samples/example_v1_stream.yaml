@@ -1,0 +1,7 @@
+apiVersion: example.f110.dev/v1
+kind: Stream
+metadata:
+  name: stream-sample
+spec:
+  # Add fields here
+  foo: bar
