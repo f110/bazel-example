@@ -20,7 +20,7 @@ func FindEtcd() (string, error) {
 	}
 	path := filepath.Join(e, "io_etcd/etcd")
 	if _, err := os.Stat(path); os.IsNotExist(err) {
-		return "", errors.New("bazeltesting: can't find etcd binary")
+		return "", errors.New("can't find etcd binary")
 	}
 
 	return path, nil
@@ -38,7 +38,7 @@ func FindKubeApiserver() (string, error) {
 	}
 	path := filepath.Join(e, "io_k8s_kube_apiserver/kube-apiserver")
 	if _, err := os.Stat(path); os.IsNotExist(err) {
-		return "", errors.New("bazeltesting: can't find kube-apiserver binary")
+		return "", errors.New("can't find kube-apiserver binary")
 	}
 
 	return path, err
