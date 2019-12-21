@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "spec.go",
+        "specs.go",
+    ],
+    importmap = "github.com/f110/bazel-example/operator/vendor/github.com/onsi/ginkgo/internal/spec",
+    importpath = "github.com/onsi/ginkgo/internal/spec",
+    visibility = ["//operator/vendor/github.com/onsi/ginkgo:__subpackages__"],
+    deps = [
+        "//operator/vendor/github.com/onsi/ginkgo/internal/containernode:go_default_library",
+        "//operator/vendor/github.com/onsi/ginkgo/internal/leafnodes:go_default_library",
+        "//operator/vendor/github.com/onsi/ginkgo/types:go_default_library",
+    ],
+)

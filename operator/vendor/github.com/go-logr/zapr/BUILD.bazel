@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["zapr.go"],
+    importmap = "github.com/f110/bazel-example/operator/vendor/github.com/go-logr/zapr",
+    importpath = "github.com/go-logr/zapr",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//operator/vendor/github.com/go-logr/logr:go_default_library",
+        "//operator/vendor/go.uber.org/zap:go_default_library",
+        "//operator/vendor/go.uber.org/zap/zapcore:go_default_library",
+    ],
+)
