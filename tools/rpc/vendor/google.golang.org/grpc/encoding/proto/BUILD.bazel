@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["proto.go"],
+    importmap = "github.com/f110/bazel-example/tools/rpc/vendor/google.golang.org/grpc/encoding/proto",
+    importpath = "google.golang.org/grpc/encoding/proto",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//tools/rpc/vendor/github.com/golang/protobuf/proto:go_default_library",
+        "//tools/rpc/vendor/google.golang.org/grpc/encoding:go_default_library",
+    ],
+)

@@ -1,0 +1,53 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "syscall_linux.go",
+        "syscall_nonlinux.go",
+    ],
+    importmap = "github.com/f110/bazel-example/tools/rpc/vendor/google.golang.org/grpc/internal/syscall",
+    importpath = "google.golang.org/grpc/internal/syscall",
+    visibility = ["//tools/rpc/vendor/google.golang.org/grpc:__subpackages__"],
+    deps = select({
+        "@io_bazel_rules_go//go/platform:android": [
+            "//tools/rpc/vendor/golang.org/x/sys/unix:go_default_library",
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:darwin": [
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:dragonfly": [
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:freebsd": [
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:ios": [
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:linux": [
+            "//tools/rpc/vendor/golang.org/x/sys/unix:go_default_library",
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:nacl": [
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:netbsd": [
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:openbsd": [
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:plan9": [
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:solaris": [
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:windows": [
+            "//tools/rpc/vendor/google.golang.org/grpc/grpclog:go_default_library",
+        ],
+        "//conditions:default": [],
+    }),
+)
