@@ -1,0 +1,10 @@
+filegroup(
+    name = "all",
+    srcs = glob(["*"]),
+    visibility = ["//visibility:public"],
+)
+
+exports_files(
+    ["move-into-workspace.bash"],
+    visibility = ["//visibility:public"],
+)
