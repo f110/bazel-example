@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "gocon20_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/f110/bazel-example/cmd/gocon20",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//internal/server",
+        "//vendor/golang.org/x/xerrors",
+    ],
+)
+
+go_binary(
+    name = "gocon20",
+    embed = [":gocon20_lib"],
+    visibility = ["//visibility:public"],
+)
+
+load("@io_bazel_rules_docker//go:image.bzl", "go_image")
+
+go_image(
+    name = "gocon20_image",
+    embed = [":gocon20_lib"],
+    goos = "linux",
+    goarch = "amd64",
+    visibility = ["//visibility:public"],
+)

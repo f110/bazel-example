@@ -1,9 +1,0 @@
-filegroup(
-    name = "all_rules",
-    visibility = ["//visibility:public"],
-)
-
-exports_files(
-    ["kicker.tpl"],
-    visibility = ["//visibility:public"],
-)
