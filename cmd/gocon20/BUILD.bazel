@@ -22,7 +22,7 @@ load("@io_bazel_rules_docker//go:image.bzl", "go_image")
 go_image(
     name = "gocon20_image",
     embed = [":gocon20_lib"],
-    goos = "linux",
     goarch = "amd64",
+    goos = "linux",
     visibility = ["//visibility:public"],
 )

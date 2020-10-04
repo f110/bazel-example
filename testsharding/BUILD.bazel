@@ -1,0 +1,7 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "testsharding_test",
+    srcs = ["sharding_test.go"],
+    shard_count = 2,
+)
