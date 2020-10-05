@@ -1,0 +1,10 @@
+sh_binary(
+    name = "sh",
+    srcs = ["hello.sh"],
+    deps = [":world"]
+)
+
+sh_library(
+    name = "world",
+    srcs = ["world.sh"]
+)
