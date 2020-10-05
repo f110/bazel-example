@@ -1,0 +1,6 @@
+sh_test(
+    name = "urls",
+    srcs = ["check-url.sh"],
+    args = ["$(location :urls.txt)"],
+    data = [":urls.txt"],
+)
